@@ -106,8 +106,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 if __name__ == "__main__":
-  agent = Agent(alpha = 0.0005, input_dims=8, gamma = 0.99, n_actions = 4, layer1_size=64, layer2_size=64)
-  env = gym.make('LunarLander-v2')
+  agent = Agent(alpha = 0.0005, input_dims = 4, gamma = 0.99, n_actions = 2, layer1_size=64, layer2_size=64)
+  env = gym.make('CartPole-v0')
   score_history = []
 
   n_episodes = 2000

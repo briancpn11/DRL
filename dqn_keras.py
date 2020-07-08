@@ -123,13 +123,13 @@ class Agent(object):
   def load_model(self):
     self.q_eval = load_model(self.model_file)
 
-from utils import plotLearning
+#from utils import plotLearning
 import gym
 
 if __name__ == "__main__":
-  env = gym.make('LunarLander-v2')
+  env = gym.make('CartPole-v0')
   n_games = 500
-  agent = Agent(gamma = 0.99, epsilon = 1.0, alpha = 0.0005, input_dims = 8, n_actions = 4, mem_size = 1000000, batch_size = 64, epsilon_end = 0.01)
+  agent = Agent(gamma = 0.99, epsilon = 1.0, alpha = 0.0005, input_dims = 4, n_actions = 2, mem_size = 1000000, batch_size = 64, epsilon_end = 0.01)
 
   scores = []
   eps_history = []
@@ -139,6 +139,7 @@ if __name__ == "__main__":
     score = 0
     observation = env.reset()
     while not done:
+      env.render()
       action = agent.choose_action(observation)
       observation_, reward, done, info = env.step(action)
       score += reward
@@ -157,5 +158,5 @@ if __name__ == "__main__":
 
   filename = 'lunar.png'
   x = [i+1 for i in range(n_games)]
-  plotLearning(x, scores, eps_history, filename)
+#  plotLearning(x, scores, eps_history, filename)
 
